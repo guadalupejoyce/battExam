@@ -5,7 +5,7 @@ CREATE DATABASE cia;
 USE cia;
 
 -- Create the table
-CREATE TABLE arithmetic (
+CREATE TABLE question (
     QID INT AUTO_INCREMENT PRIMARY KEY,
     difficulty ENUM('easy', 'average', 'difficult'),
     questions VARCHAR(255),
@@ -13,7 +13,7 @@ CREATE TABLE arithmetic (
 );
 
 -- Insert 50 entries into the table
-INSERT INTO arithmetic (difficulty, question, answer)
+INSERT INTO question (difficulty, question, answer)
 VALUES
 ('easy', '1 + 1 = 2', 'T'),
 ('easy', '2 + 2 = 5', 'F'),
