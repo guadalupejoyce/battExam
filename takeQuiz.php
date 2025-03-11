@@ -15,19 +15,19 @@
         } elseif ($_SESSION['DifficultyList'][$currentIndex] == 'difficult') {
             $points = 15;
         }
-        array_push($_SESSION['PointList'], $points);
     
         if ($_SESSION['AnswerList'][$currentIndex] == $userAnswer) {
             //if user answer = correct answer
             array_push($_SESSION['ResponseList'], "(correct)");	//append ‘correct’ if correct
             //append point value and update total points value (add)
             $_SESSION['TotalPoints'] = $totalPoints + $points;
+            array_push($_SESSION['PointList'], $points);
             array_push($_SESSION['TotalList'], $_SESSION['TotalPoints']);
         } else {
             array_push($_SESSION['ResponseList'], "(wrong)");	//append ‘wrong’ if wrong
             //append point value and update total points value (minus)
             $_SESSION['TotalPoints'] = $totalPoints - $points;
-            
+            array_push($_SESSION['PointList'], '-' . $points);
             array_push($_SESSION['TotalList'], $_SESSION['TotalPoints']);
         }  
 
@@ -49,7 +49,12 @@
 
 <!DOCTYPE html>
 <html>
-<head><title>TAKE QUIZ</title></head>
+    
+<head>
+    <title>TAKE QUIZ</title>
+<link rel="stylesheet" type="text/css" href="/batteryExam/style.css">
+</head>
+
 <body>
     <form action="takeQuiz.php" method="post">
         <div>Question:

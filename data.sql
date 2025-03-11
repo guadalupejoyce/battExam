@@ -13,7 +13,7 @@ CREATE TABLE question (
 );
 
 -- Insert 50 entries into the table
-INSERT INTO question (difficulty, question, answer)
+INSERT INTO question (difficulty, questions, answers)
 VALUES
 ('easy', '1 + 1 = 2', 'T'),
 ('easy', '2 + 2 = 5', 'F'),

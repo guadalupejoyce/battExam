@@ -1,0 +1,55 @@
+/* Global Styles */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f0f0f0;
+}
+
+/* Table Styles */
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+/* Paragraph Styles */
+
+p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+/* Heading Styles */
+
+h4 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Button Styles */
+
+button {
+    padding: 10px 20px;
+    background-color: #FFFF99;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #FFFFED;
+}

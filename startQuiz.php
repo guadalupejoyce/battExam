@@ -35,14 +35,19 @@
 ?>
 
 <!DOCTYPE html>
-<html>
-<head><title>START QUIZ</title></head>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Page Title</title>
+    <link rel="stylesheet" type="text/css" href="/batteryExam/style.css">
+</head>
 
 <body>
     <form method="post">
-        <div>Player Name:
+        <div>Examiner name:
             <input type="text" name="username" placeholder="" required ="required"></div>
-        <div>Number of Question:
+        <div>Number of question:
             <input type="radio" id="noQuestions" name="noQuestions" value="5">5</input>
             <input type="radio" id="noQuestions" name="noQuestions" value="10">10</input>
             <input type="radio" id="noQuestions" name="noQuestions" value="15">15</input>
