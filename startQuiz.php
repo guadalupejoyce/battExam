@@ -17,7 +17,7 @@
         $_SESSION['PointList'] = array();		//total points value per interaction
         $_SESSION['TotalList'] = array();
            
-        $sql = "SELECT * FROM arithmetic ORDER BY RAND() LIMIT $noQuestions";
+        $sql = "SELECT * FROM question ORDER BY RAND() LIMIT $noQuestions";
         $query = mysqli_query($connect, $sql);
         if ($query->num_rows > 0) {
             while($row = mysqli_fetch_assoc($query)) {		//append to arrays values from table
