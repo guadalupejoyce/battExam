@@ -1,36 +1,35 @@
 <?php
-    include "connect.php";
+    include "connect.php";                                   //connect to database
 
-    if(isset($_POST['Start'])) {		//if start button is clicked
-        $username = $_POST['username'];		//declare variable and assign user input
-        $noQuestions = $_POST['noQuestions'];
+    if(isset($_POST['Start'])) {                            //if start button is clicked
+        $noQuestions = $_POST['noQuestions'];               //local variable for number of questions
 
-        $_SESSION['username'] = $_POST['username'];	//declare sessions for global access
-        $_SESSION['noQuestions'] = $_POST['noQuestions'];      
-        $_SESSION['CurrentIndex'] = 0;		//counter
-        $_SESSION['TotalPoints'] = 0;			//add points
-        $_SESSION['Points'] = 0;			//add points
-        $_SESSION['QuestionList'] = array();
-        $_SESSION['AnswerList'] = array();
-        $_SESSION['DifficultyList'] = array();
-        $_SESSION['ResponseList'] = array();		//correct or wrong
-        $_SESSION['PointList'] = array();		//total points value per interaction
-        $_SESSION['TotalList'] = array();
+        //declare sessions for global access
+        $_SESSION['username'] = $_POST['username'];         //examiner name       
+        $_SESSION['noQuestions'] = $_POST['noQuestions'];   //number of questions      
+        $_SESSION['CurrentIndex'] = 0;                      //counter
+        $_SESSION['TotalPoints'] = 0;			            //total, accumulated points
+        $_SESSION['Points'] = 0;			                //points per difficulty level
+        $_SESSION['QuestionList'] = array();                //stores questions 
+        $_SESSION['AnswerList'] = array();                  //stores answers
+        $_SESSION['DifficultyList'] = array();              //stores difficulty level
+        $_SESSION['ResponseList'] = array();		        //correct or wrong
+        $_SESSION['PointList'] = array();		            //points value per item
+        $_SESSION['TotalList'] = array();                   //records changes in value of total points   
            
-        $sql = "SELECT * FROM question ORDER BY RAND() LIMIT $noQuestions";
+        $sql = "SELECT * FROM question ORDER BY RAND() LIMIT $noQuestions";         //select random questions from table
         $query = mysqli_query($connect, $sql);
-        if ($query->num_rows > 0) {
+        if ($query->num_rows > 0) {                          //if there are rows in table
             while($row = mysqli_fetch_assoc($query)) {		//append to arrays values from table
-                array_push($_SESSION['QuestionList'], $row['questions']);  
-                array_push($_SESSION['AnswerList'], $row['answers']);
-                array_push($_SESSION['DifficultyList'], $row['difficulty']);
+                array_push($_SESSION['QuestionList'], $row['questions']);           //list of questions 
+                array_push($_SESSION['AnswerList'], $row['answers']);               //list of answers 
+                array_push($_SESSION['DifficultyList'], $row['difficulty']);        //list of difficulty level
             }
         }
         echo '<script language="javascript">';
-        echo 'location.href="takeQuiz.php"';		//go to takeQuiz.php
+        echo 'location.href="takeQuiz.php"';		        //go to takeQuiz.php
         echo '</script>';
-        $stmt->close();
-        $connect->close();
+        $connect->close();                                  //close connection
     }
 ?>
 
@@ -38,21 +37,20 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Page Title</title>
-    <link rel="stylesheet" type="text/css" href="/batteryExam/style.css">
+    <title>Start Quiz</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
-    <form method="post">
-        <div>Examiner name:
+    <form method="post">            <!--will send user input through post-->
+        <div>Examiner name:         <!--input examiner name--> 
             <input type="text" name="username" placeholder="" required ="required"></div>
-        <div>Number of question:
+        <div>Number of question:        <!--input number of questions-->
             <input type="radio" id="noQuestions" name="noQuestions" value="5">5</input>
             <input type="radio" id="noQuestions" name="noQuestions" value="10">10</input>
             <input type="radio" id="noQuestions" name="noQuestions" value="15">15</input>
-        <div><button><a href="index.php">Home</a></button>
-            <button type="submit" id="Start" name="Start">Take Quiz</button></div>
+        <div><button><a href="index.php">Home</a></button>          <!--back to home-->
+            <button type="submit" id="Start" name="Start">Take Quiz</button></div>          <!--start-->
     </form>
 </body>
 </html>

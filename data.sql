@@ -1,8 +1,8 @@
 -- Create the database
-CREATE DATABASE cia;
+CREATE DATABASE cai;
 
 -- Use the database
-USE cia;
+USE cai;
 
 -- Create the table
 CREATE TABLE question (
